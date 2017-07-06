@@ -35,14 +35,16 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-group :development, :test do
-  gem 'pry'
-  gem 'awesome_rails_console'
-end
 
 gem 'bootstrap-sass'
 gem 'simple_form'
 gem 'devise'
+gem 'annotate'
+
+group :development, :test do
+  gem 'pry'
+  gem 'awesome_rails_console'
+end
 
 group :development do
   gem 'web-console', '>= 3.3.0'
