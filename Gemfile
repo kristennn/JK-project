@@ -40,6 +40,7 @@ gem 'bootstrap-sass'
 gem 'simple_form'
 gem 'devise'
 gem 'annotate'
+gem 'will_paginate'
 
 group :development, :test do
   gem 'pry'
