@@ -1,0 +1,15 @@
+<div class="pull-right">
+  <%= link_to("发表", new_post_path, class: "btn btn-lg btn-primary")%>
+</div>
+
+<div class="container">
+<% @posts.each do |post| %>
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <%= post.content %>
+    </div>
+  </div>
+
+<% end %>
+</div>
