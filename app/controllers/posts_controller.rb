@@ -40,6 +40,20 @@ class PostsController < ApplicationController
     @post.user = current_user
   end
 
+  def collect
+    @post = Post.find(params[:id])
+    current_user.collected_posts << @post
+    flash[:notice] = "成功收藏本翻译"
+    redirect_to :back
+  end
+
+  def uncollect
+    @post = Post.find(params[:id])
+    current_user.collected_posts.destroy(@post)
+    flash[:alert] = "已经取消收藏本翻译"
+    redirect_to :back
+  end
+
   private
 
   def post_params

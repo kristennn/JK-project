@@ -9,5 +9,11 @@ class User < ApplicationRecord
   end
 
   has_many :posts
+  has_many :collects
+  has_many :collected_posts, through: :collects, source: :post
+
+  def is_collect_of?(post)
+    collected_posts.include?(post)
+  end
 
 end
