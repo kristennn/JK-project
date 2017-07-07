@@ -41,12 +41,14 @@ gem 'simple_form'
 gem 'devise'
 gem 'annotate'
 
+
 group :development, :test do
   gem 'pry'
   gem 'awesome_rails_console'
 end
 
 group :development do
+  gem 'faker'
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.0.5'
   #gem 'spring'
