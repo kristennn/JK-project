@@ -40,6 +40,8 @@ gem 'bootstrap-sass'
 gem 'simple_form'
 gem 'devise'
 gem 'annotate'
+gem 'carrierwave'
+gem 'mini_magick'
 
 
 group :development, :test do
