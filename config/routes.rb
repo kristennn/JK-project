@@ -11,6 +11,11 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :comments
+    resources :comments do
+      member do
+        post :hide
+        post :public
+      end
+    end
   end
 end

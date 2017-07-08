@@ -13,4 +13,16 @@ class Admin::CommentsController < ApplicationController
     redirect_to admin_comments_path
   end
 
+  def hide
+    @comment = Comment.find(params[:id])
+    @comment.hide!
+    redirect_to admin_comments_path
+  end
+
+  def public
+    @comment = Comment.find(params[:id])
+    @comment.public!
+    redirect_to admin_comments_path
+  end
+
 end

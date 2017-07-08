@@ -18,7 +18,9 @@
 
     <div class="panel-body">
       <% post.comments.each do |comment| %>
-      <%= comment.note %>
+      <% if !comment.is_hidden? %>
+        <%= comment.note %>
+      <% end %>
       <% end %>
     </div>
 
