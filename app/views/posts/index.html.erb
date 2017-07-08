@@ -7,23 +7,25 @@
 
   <div class="panel panel-default">
     <div class="panel-body">
+      <span id="psot-thumbsup-<%= post.id%>" class=" label label-success"><%= post.likes.count%>👍</span>
       <%= post.content %>
       <div class="text-right">
         <% if current_user%>
           <% if post.find_like(current_user) %>
-            <%= link_to "-1", unlike_post_path(post), method: :post, class: "btn btn-primary" %>
+            <%= link_to "取赞", unlike_post_path(post), method: :post, class: "btn btn-primary btn-sm" %>
           <% else %>
-            <%= link_to "+1", like_post_path(post), method: :post, class: "btn btn-danger" %>
+            <%= link_to "👍", like_post_path(post), method: :post, class: "btn btn-primary btn-sm" %>
           <% end %>
         <% end %>
 
+        <% if !current_user.is_collect_of?(post) %>
+          <%= link_to("收藏", collect_post_path(post), method: :post, class: "btn btn-sm") %>
+        <% else %>
+          <%= link_to("取消收藏", uncollect_post_path(post), method: :post, class: "btn btn-sm") %>
+        <% end %>
       </div>
     </div>
-    <% if !current_user.is_collect_of?(post) %>
-      <%= link_to("收藏", collect_post_path(post), method: :post, class: "btn btn-sm") %>
-    <% else %>
-      <%= link_to("取消收藏", uncollect_post_path(post), method: :post, class: "btn btn-sm") %>
-    <% end %>
+
   </div>
 
 <% end %>
