@@ -16,3 +16,14 @@
 
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+
+//搜索框
+
+.input-group{
+  position: relative;
+  display: table;
+  border-collapse: separate;
+  width: 280px;
+  margin-top: 12px;
+}
