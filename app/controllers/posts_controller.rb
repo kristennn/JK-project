@@ -3,6 +3,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.order("id DESC").all
+    @comment = Comment.new
   end
 
   def new
