@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     member do
       post :collect
       post :uncollect
+      post :like
+      post :unlike
     end
   end
 end
