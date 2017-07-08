@@ -42,6 +42,7 @@ gem 'devise'
 gem 'annotate'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'will_paginate'
 
 
 group :development, :test do
