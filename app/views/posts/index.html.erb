@@ -10,6 +10,10 @@
       <span id="psot-thumbsup-<%= post.id%>" class=" label label-success"><%= post.likes.count%>👍</span>
       <%= post.content %>
       <div class="text-right">
+        <% if post.liked_users.any? %>
+          <%= post.liked_users.map{ |u| u.display_name}.join(",")%>点了赞
+        <% end %>
+
         <% if current_user%>
           <% if post.find_like(current_user) %>
             <%= link_to "取赞", unlike_post_path(post), method: :post, class: "btn btn-primary btn-sm" %>
