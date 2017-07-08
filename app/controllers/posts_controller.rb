@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
 
   def index
-    @posts = Post.order("id DESC").all
+    @posts = Post.order("id DESC").all.paginate(:page => params[:page], :per_page => 5)
     @comment = Comment.new
   end
 
