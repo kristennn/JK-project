@@ -13,5 +13,10 @@ class Post < ApplicationRecord
     self.likes.where( :user_id => user.id).first
   end
 
-  
+  has_many :hates
+  has_many :hated_users, through: :hates, source: :user
+
+  def find_hate(user)
+    self.hates.where( :user_id => user.id ).first
+  end
 end

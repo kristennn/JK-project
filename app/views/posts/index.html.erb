@@ -14,11 +14,19 @@
           <%= post.liked_users.map{ |u| u.display_name}.join(",")%>点了赞
         <% end %>
 
-        <% if current_user%>
+        <% if current_user %>
           <% if post.find_like(current_user) %>
             <%= link_to "取赞", unlike_post_path(post), method: :post, class: "btn btn-primary btn-sm" %>
           <% else %>
             <%= link_to "👍", like_post_path(post), method: :post, class: "btn btn-primary btn-sm" %>
+          <% end %>
+        <% end %>
+
+        <% if current_user %>
+          <% unless post.find_hate(current_user) %>
+           <%= link_to "💔", hate_post_path(post), method: :post, class: "btn btn-info btn-sm"  %>
+          <% else %>
+            <%= link_to "💔", hate_post_path(post), method: :post, class: "btn btn-info btn-sm"  %>
           <% end %>
         <% end %>
 

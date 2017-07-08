@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       post :uncollect
       post :like
       post :unlike
+      post :hate
     end
   end
 end

@@ -72,6 +72,14 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
 
+  def hate
+    @post = Post.find(params[:id])
+    unless @post.find_hate(current_user)
+      Hate.create( :user => current_user, :post => @post)
+    end
+    redirect_to :back
+  end
+
   private
 
   def post_params
