@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root 'posts#index'
 
   resources :posts do
+    collection do
+      get :search
+    end
     member do
       post :collect
       post :uncollect

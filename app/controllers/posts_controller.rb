@@ -1,5 +1,12 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
+  before_action :validate_search_key, only: [:search]
+
+  def search
+    if @query_string.present?
+      @posts = search_params
+    end
+  end
 
   def index
     @posts = Post.order("id DESC").all
@@ -83,6 +90,17 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:content, :image)
+    params.require(:post).permit(:content, :image, :title)
+  end
+
+  protected
+
+  def validate_search_key
+    @query_string = params[:q].gsub(/\\|\'|\/|\?/, "")if params[:q].present?
+  end
+
+
+  def search_params
+    Post.ransack({:title_or_content_cont => @query_string}).result(distinct: true)
   end
 end

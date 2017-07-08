@@ -1,0 +1,9 @@
+<div class="minHeight1000 bg-gray">
+  <div class="search-page w1200 pt30 bc">
+      <% if @posts.present? %>
+        <h5 class="collection search-count">已为您找到<%= @posts.count %>篇相关文章</h5>
+      <% else %>
+        <p class="tc mt100">未搜索到任何文章，要不换个关键词试试？</p>
+      <% end %>
+  </div>
+</div>
