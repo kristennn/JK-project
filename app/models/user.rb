@@ -16,4 +16,8 @@ class User < ApplicationRecord
     collected_posts.include?(post)
   end
 
+  has_many :likes, :dependent => :destroy
+  has_many :liked_posts. :through => :likes, source: :post
+
+
 end
