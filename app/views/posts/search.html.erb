@@ -1,0 +1,34 @@
+<div class="minHeight1000 bg-gray">
+  <div class="search-page w1200 pt30 bc">
+      <% if @posts.present? %>
+        <h5 class="collection search-count">已为您找到<%= @posts.count %>篇相关文章</h5>
+      <% else %>
+        <p class="tc mt100">未搜索到任何文章，要不换个关键词试试？</p>
+      <% end %>
+  </div>
+
+  <div class="container">
+  <% @posts.each do |post| %>
+
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <%= post.title %>
+        <br/>
+        <br/>
+        <span id="psot-thumbsup-<%= post.id%>" class=" label label-success"><%= post.likes.count%>👍</span>
+        <div class="text-right">
+
+          <% if !current_user.is_collect_of?(post) %>
+            <%= link_to("收藏", collect_post_path(post), method: :post, class: "btn btn-sm") %>
+          <% else %>
+            <%= link_to("取消收藏", uncollect_post_path(post), method: :post, class: "btn btn-sm") %>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+
+  <% end %>
+  </div>
+
+</div>

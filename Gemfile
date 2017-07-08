@@ -43,6 +43,8 @@ gem 'annotate'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'will_paginate'
+gem 'ransack'
+
 
 
 group :development, :test do

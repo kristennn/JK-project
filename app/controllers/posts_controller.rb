@@ -1,5 +1,12 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
+  before_action :validate_search_key, only: [:search]
+
+  def search
+    if @query_string.present?
+      @posts = search_params
+    end
+  end
 
   def index
     @posts = Post.order("id DESC").all.paginate(:page => params[:page], :per_page => 5)
@@ -37,8 +44,9 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
-    @post.user = current_user
+    @post = current_user.post.find(params[:id])
+    @post.destroy
+    redirect_to posts_path
   end
 
   def collect
@@ -55,9 +63,45 @@ class PostsController < ApplicationController
     redirect_to :back
   end
 
+  def like
+    @post = Post.find(params[:id])
+    unless @post.find_like(current_user)
+      Like.create( :user => current_user, :post => @post)
+    end
+    flash[:notice] = "点赞成功"
+    redirect_to posts_path
+  end
+
+  def unlike
+    @post = Post.find(params[:id])
+    @like = @post.find_like(current_user)
+    @like.destroy
+    flash[:notice] = "已取消赞"
+    redirect_to posts_path
+  end
+
+  def hate
+    @post = Post.find(params[:id])
+    unless @post.find_hate(current_user)
+      Hate.create( :user => current_user, :post => @post)
+    end
+    redirect_to :back
+  end
+
   private
 
   def post_params
-    params.require(:post).permit(:content, :image)
+    params.require(:post).permit(:content, :image, :title)
+  end
+
+  protected
+
+  def validate_search_key
+    @query_string = params[:q].gsub(/\\|\'|\/|\?/, "")if params[:q].present?
+  end
+
+
+  def search_params
+    Post.ransack({:title_or_content_cont => @query_string}).result(distinct: true)
   end
 end

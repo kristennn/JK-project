@@ -7,14 +7,38 @@
 
   <div class="panel panel-default">
     <div class="panel-body">
-      <%= post.content %>
-    </div>
+      <%= post.title %>
+      <br/>
+      <br/>
+      <span id="psot-thumbsup-<%= post.id%>" class=" label label-success"><%= post.likes.count%>👍</span>
+      <div class="text-right">
+        <% if post.liked_users.any? %>
+          <%= post.liked_users.map{ |u| u.display_name}.join(",")%>点了赞
+        <% end %>
 
-    <% if !current_user.is_collect_of?(post) %>
-      <%= link_to("收藏", collect_post_path(post), method: :post, class: "btn btn-sm") %>
-    <% else %>
-      <%= link_to("取消收藏", uncollect_post_path(post), method: :post, class: "btn btn-sm") %>
-    <% end %>
+        <% if current_user %>
+          <% if post.find_like(current_user) %>
+            <%= link_to "取赞", unlike_post_path(post), method: :post, class: "btn btn-primary btn-sm" %>
+          <% else %>
+            <%= link_to "👍", like_post_path(post), method: :post, class: "btn btn-primary btn-sm" %>
+          <% end %>
+        <% end %>
+
+        <% if current_user %>
+          <% unless post.find_hate(current_user) %>
+           <%= link_to "💔", hate_post_path(post), method: :post, class: "btn btn-info btn-sm"  %>
+          <% else %>
+            <%= link_to "💔", hate_post_path(post), method: :post, class: "btn btn-info btn-sm"  %>
+          <% end %>
+        <% end %>
+
+        <% if !current_user.is_collect_of?(post) %>
+          <%= link_to("收藏", collect_post_path(post), method: :post, class: "btn btn-sm") %>
+        <% else %>
+          <%= link_to("取消收藏", uncollect_post_path(post), method: :post, class: "btn btn-sm") %>
+        <% end %>
+      </div>
+    </div>
 
     <div class="panel-body">
       <% post.comments.each do |comment| %>
@@ -30,7 +54,6 @@
         <%= f.submit "发表评论" %>
       <% end %>
     </div>
-
   </div>
 
 <% end %>

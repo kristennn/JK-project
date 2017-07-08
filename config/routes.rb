@@ -4,10 +4,16 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :comments
-    member do
-      post :collect
-      post :uncollect
-    end
+      collection do
+        get :search
+      end
+      member do
+        post :collect
+        post :uncollect
+        post :like
+        post :unlike
+        post :hate
+      end
   end
 
   namespace :admin do
