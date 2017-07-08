@@ -7,8 +7,10 @@
 
   <div class="panel panel-default">
     <div class="panel-body">
-      <span id="psot-thumbsup-<%= post.id%>" class=" label label-success"><%= post.likes.count%>👍</span>
       <%= post.content %>
+      <br/>
+      <br/>
+      <span id="psot-thumbsup-<%= post.id%>" class=" label label-success"><%= post.likes.count%>👍</span>
       <div class="text-right">
         <% if post.liked_users.any? %>
           <%= post.liked_users.map{ |u| u.display_name}.join(",")%>点了赞
