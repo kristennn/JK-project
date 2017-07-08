@@ -9,4 +9,8 @@ Rails.application.routes.draw do
       post :uncollect
     end
   end
+
+  namespace :admin do
+    resources :comments
+  end
 end

@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-md-12">
+    <h2 class="text-center">所有的评论</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>编号</th>
+          <th>评论内容</th>
+          <th>评论者</th>
+          <th>操作选项</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @comments.each do |comment| %>
+          <tr>
+            <td><%= comment.id %></td>
+            <td><%= comment.note %></td>
+            <td><%= comment.user.email %></td>
+            <td>
+              <%= link_to("删除评论", admin_comment_path(comment), method: :delete, data: { confirm: "你确定要删除这条评论吗？"}, class: "btn btn-xs btn-default") %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
