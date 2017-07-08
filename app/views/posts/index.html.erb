@@ -8,13 +8,19 @@
   <div class="panel panel-default">
     <div class="panel-body">
       <%= post.content %>
-      <%= @comment.note %>
     </div>
+
     <% if !current_user.is_collect_of?(post) %>
       <%= link_to("收藏", collect_post_path(post), method: :post, class: "btn btn-sm") %>
     <% else %>
       <%= link_to("取消收藏", uncollect_post_path(post), method: :post, class: "btn btn-sm") %>
     <% end %>
+
+    <div class="panel-body">
+      <% post.comments.each do |comment| %>
+      <%= comment.note %>
+      <% end %>
+    </div>
 
     <div class="panel-body">
       <%= simple_form_for [post, @comment] do |f| %>

@@ -4,4 +4,5 @@ class Post < ApplicationRecord
   validates_presence_of :content
   has_many :collects
   has_many :collected_users, through: :collects, source: :user
+  has_many :comments
 end
