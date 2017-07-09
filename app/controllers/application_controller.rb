@@ -7,4 +7,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  private
+  
+   def configure_permitted_parameters
+     added_params = [:name, :email, :password, :password_confirmation,:avatar]
+     devise_parameter_sanitizer.permit :account_update, keys: added_params
+   end
+
 end
