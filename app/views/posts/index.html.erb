@@ -11,6 +11,7 @@
       <br/>
       <br/>
       <span id="psot-thumbsup-<%= post.id%>" class=" label label-success"><%= post.likes.count%>👍</span>
+      <span id="psot-thumbsup-<%= post.id%>" class=" label label-danger"><%= post.hates.count%>👎</span>
       <div class="text-right">
         <% if post.liked_users.any? %>
           <%= post.liked_users.map{ |u| u.display_name}.join(",")%>点了赞
@@ -26,9 +27,9 @@
 
         <% if current_user %>
           <% unless post.find_hate(current_user) %>
-           <%= link_to "💔", hate_post_path(post), method: :post, class: "btn btn-info btn-sm"  %>
+           <%= link_to "👎", hate_post_path(post), method: :post, class: "btn btn-info btn-sm"  %>
           <% else %>
-            <%= link_to "💔", hate_post_path(post), method: :post, class: "btn btn-info btn-sm"  %>
+            <%= link_to "👎", hate_post_path(post), method: :post, class: "btn btn-info btn-sm"  %>
           <% end %>
         <% end %>
 

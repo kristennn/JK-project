@@ -85,6 +85,7 @@ class PostsController < ApplicationController
     unless @post.find_hate(current_user)
       Hate.create( :user => current_user, :post => @post)
     end
+    flash[:alert] = "你已鄙视它"
     redirect_to :back
   end
 
