@@ -21,13 +21,14 @@
             <% else %>
             <li class="dropdown">
               <a href="/" class="dropdown-toggle" data-toggle="dropdown">
-                Hi, <%= current_user.email %>
+                Hi, <%= current_user.display_name %>
                 <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
                 <% if current_user.is_admin? %>
                   <li><%= link_to("管理评论", admin_comments_path) %></li>
                 <% end %>
+                <li><%= link_to("个人中心", edit_account_user_path(current_user)) %></li>
                 <li><%= link_to("退出", destroy_user_session_path, method: :delete) %></li>
               </ul>
             </li>
