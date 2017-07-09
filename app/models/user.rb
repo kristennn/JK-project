@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  mount_uploader :avatar, AvatarUploader
 
   def admin?
     is_admin
@@ -24,7 +25,11 @@ class User < ApplicationRecord
 
 
   def display_name
-    self.email.split("@").first
+    if self.username.present?
+      self.username
+    else
+      self.email.split("@").first
+    end
   end
 
 end
