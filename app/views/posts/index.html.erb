@@ -44,6 +44,7 @@
       <% post.comments.each do |comment| %>
       <% if !comment.is_hidden? %>
         <%= comment.note %>
+      </br>
       <% end %>
       <% end %>
     </div>
