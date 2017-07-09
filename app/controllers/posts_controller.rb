@@ -29,12 +29,12 @@ class PostsController < ApplicationController
 
 
   def edit
-    @post = Post.find_by_friendly_id![params[:id]]
+    @post = Post.find_by_friendly_id!(params[:id])
     @post.user = current.user
   end
 
   def update
-    @post = Post.find_by_friendly_id![params[:id]]
+    @post = Post.find_by_friendly_id!(params[:id])
     @post.user = current_user
     if @post.update(post_params)
       redirect_to posts_path
@@ -44,27 +44,27 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find_by_friendly_id![params[:id]]
+    @post = Post.find_by_friendly_id!(params[:id])
     @post.destroy
     redirect_to posts_path
   end
 
   def collect
-    @post = Post.find_by_friendly_id![params[:id]]
+    @post = Post.find_by_friendly_id!(params[:id])
     current_user.collected_posts << @post
     flash[:notice] = "成功收藏本翻译"
     redirect_to :back
   end
 
   def uncollect
-    @post = Post.find_by_friendly_id![params[:id]]
+    @post = Post.find_by_friendly_id!(params[:id])
     current_user.collected_posts.destroy(@post)
     flash[:alert] = "已经取消收藏本翻译"
     redirect_to :back
   end
 
   def like
-    @post = Post.find_by_friendly_id![params[:id]]
+    @post = Post.find_by_friendly_id!(params[:id])
     unless @post.find_like(current_user)
       Like.create( :user => current_user, :post => @post)
     end
@@ -73,7 +73,7 @@ class PostsController < ApplicationController
   end
 
   def unlike
-    @post = Post.find_by_friendly_id![params[:id]]
+    @post = Post.find_by_friendly_id!(params[:id])
     @like = @post.find_like(current_user)
     @like.destroy
     flash[:notice] = "已取消赞"
@@ -81,7 +81,7 @@ class PostsController < ApplicationController
   end
 
   def hate
-    @post = Post.find_by_friendly_id![params[:id]]
+    @post = Post.find_by_friendly_id!(params[:id])
     unless @post.find_hate(current_user)
       Hate.create( :user => current_user, :post => @post)
     end
