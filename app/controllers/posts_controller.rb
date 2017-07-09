@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:create, :edit, :update, :destroy, :collect, :uncollect, :hate]
   before_action :validate_search_key, only: [:search]
 
   def search
