@@ -1,7 +1,13 @@
 class Post < ApplicationRecord
   mount_uploader :image, ImageUploader
-  belongs_to :user
   validates_presence_of :content
+  before_validation :generate_friendly_id, on: :create
+
+  def to_param
+    self.friendly_id
+  end
+
+  belongs_to :user
 
   has_many :collects
   has_many :collected_users, through: :collects, source: :user
@@ -19,5 +25,11 @@ class Post < ApplicationRecord
 
   def find_hate(user)
     self.hates.where( :user_id => user.id ).first
+  end
+
+  protected
+
+  def generate_friendly_id
+    self.friendly_id ||= SecureRandom.uuid
   end
 end
