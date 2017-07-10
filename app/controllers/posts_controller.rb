@@ -27,6 +27,11 @@ class PostsController < ApplicationController
     end
   end
 
+  def show
+    @post = Post.find_by_friendly_id!(params[:id])
+    @comments = @post.comments
+  end
+
 
   def edit
     @post = Post.find_by_friendly_id!(params[:id])

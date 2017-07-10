@@ -7,7 +7,7 @@
 
   <div class="panel panel-default">
     <div class="panel-body">
-      <%= post.title %>
+      <%= link_to(post.title, post_path(post)) %>
       <br/>
       <br/>
       <span id="psot-thumbsup-<%= post.id%>" class=" label label-success"><%= post.likes.count%>👍</span>
