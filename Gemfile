@@ -47,6 +47,7 @@ gem 'ransack'
 gem 'font-awesome-rails'
 gem 'devise-i18n'
 gem 'rails-i18n'
+gem 'ckeditor'
 
 group :development, :test do
   gem 'pry'
