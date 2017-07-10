@@ -1,0 +1,28 @@
+<div class="panel panel-default">
+  <h2><%= @post.title %></h2>
+  <h2><%= @post.content %></h2>
+  <div class="panel-body">
+    <% if @comments.empty? %>
+      <p>尚未有人留言</p>
+    <% else %>
+      <% @floor = 1 %>
+      <% @comments.each do |comment| %>
+        <%= @floor %>楼
+        <div class="col-md-12">
+          <p>
+            <% if current_user.avatar.present? %>
+              <%= image_tag(current_user.avatar.thumb.url,style:"border-radius:50%;width:50px;height:50px;",class:"thumbnail")  %>
+                <!-- 用户的自选头像 -->
+            <% else %>
+              <%= image_tag("http://ww1.sinaimg.cn/large/006tNbRwgy1ffzxufbo0lj3069069t8o.jpg",class:"thumbnail",style:"width:60px;height:60px;border-radius:50%;") %>
+              <!-- 定义用户未选择头像时的默认头像 -->
+            <% end %>
+            <%= comment.user.username %>
+            <%= comment.note %>
+          </p>
+        </div>
+        <% @floor = @floor + 1 %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
