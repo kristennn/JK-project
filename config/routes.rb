@@ -29,5 +29,9 @@ Rails.application.routes.draw do
     resources :users
   end
 
+  namespace :account do
+    resources :posts
+  end
+
   resources :collects
 end
