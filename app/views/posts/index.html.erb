@@ -7,8 +7,8 @@
 
   <div class="panel panel-default">
     <div class="panel-body">
-      <% if current_user && current_user.avatar.present? %>
-        <%= image_tag(current_user.avatar.thumb.url,style:"border-radius:50%;width:50px;height:50px;",class:"thumbnail")  %>
+      <% if post.user.avatar.present? %>
+        <%= image_tag(post.user.avatar.thumb.url,style:"border-radius:50%;width:50px;height:50px;",class:"thumbnail")  %>
           <!-- 用户的自选头像 -->
       <% else %>
         <%= image_tag("http://ww1.sinaimg.cn/large/006tNbRwgy1ffzxufbo0lj3069069t8o.jpg",class:"thumbnail",style:"width:60px;height:60px;border-radius:50%;") %>
