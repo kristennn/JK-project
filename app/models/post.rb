@@ -27,6 +27,8 @@ class Post < ApplicationRecord
     self.hates.where( :user_id => user.id ).first
   end
 
+  belongs_to :category
+
   def hide!
     self.is_hidden = true
     self.save

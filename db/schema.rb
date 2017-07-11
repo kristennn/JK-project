@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170711064158) do
+ActiveRecord::Schema.define(version: 20170711071509) do
+
+  create_table "categories", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "collects", force: :cascade do |t|
     t.integer  "post_id"
@@ -58,6 +63,7 @@ ActiveRecord::Schema.define(version: 20170711064158) do
     t.text     "metacontent"
     t.string   "link"
     t.boolean  "is_hidden",   default: false
+    t.integer  "category_id"
     t.index ["friendly_id"], name: "index_posts_on_friendly_id", unique: true
   end
 
