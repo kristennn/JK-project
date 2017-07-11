@@ -9,5 +9,6 @@ Bundler.require(*Rails.groups)
 module Project
   class Application < Rails::Application
     config.i18n.default_locale = "zh-CN"
+    config.time_zone = "Beijing"
   end
 end

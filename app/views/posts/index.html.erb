@@ -15,6 +15,8 @@
           <!-- 定义用户未选择头像时的默认头像 -->
       <% end %>
       <%= post.user.username %>
+      <br/>
+      发布于 <%= post.created_at.strftime("%Y/%m%d %I:%M") %>
     </div>
     <div class="panel-body">
       <%= link_to(post.title, post_path(post)) %>
