@@ -6,7 +6,10 @@
       <%= f.input :title, :label => "原文链接" %>
     </div>
     <div class="form-group">
-      <%= f.cktext_area :content, :label => "原文段落" %>
+      <%= f.input :metacontent, :label => "原文内容" %>
+    </div>
+    <div class="form-group">
+      <%= f.cktext_area :content, :label => "翻译成果" %>
     </div>
     <div class="form-group">
       <%= f.input :image, as: :file %>
