@@ -17,7 +17,7 @@
             <td><%= post.title %></td>
             <td><%= post.user.email %></td>
             <td>
-              <%= link_to("删除文章", admin_post_path(post), method: :delete, data: { confirm: "你确定要删除这条评论吗？"}, class: "btn btn-xs btn-default") %>
+              <%= link_to("删除文章", admin_post_path(post), method: :delete, data: { confirm: "你确定要删除这条评论吗？"}, class: "btn btn-xs btn-danger") %>
               <% if post.is_hidden? %>
                 <%= link_to("公开", public_admin_post_path(post), method: :post, class: "btn btn-xs btn-default") %>
               <% else %>

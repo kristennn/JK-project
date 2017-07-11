@@ -17,7 +17,7 @@
             <td><%= comment.note %></td>
             <td><%= comment.user.email %></td>
             <td>
-              <%= link_to("删除评论", admin_comment_path(comment), method: :delete, data: { confirm: "你确定要删除这条评论吗？"}, class: "btn btn-xs btn-default") %>
+              <%= link_to("删除评论", admin_comment_path(comment), method: :delete, data: { confirm: "你确定要删除这条评论吗？"}, class: "btn btn-xs btn-danger") %>
               <% if comment.is_hidden? %>
                 <%= link_to("公开评论", public_admin_comment_path(comment), method: :post, class: "btn btn-xs btn-default") %>
               <% else %>
