@@ -28,3 +28,25 @@
   width: 280px;
   margin-top: 12px;
 }
+
+//个人中心页面
+.nav-pills1{
+  box-shadow: 1px 2px 3px 1px rgba(0,0,0,0.3);
+  height: 150px;
+}
+.panel-heading {
+    padding: 30px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    font-size: 2.5em;
+}
+.panel{
+  margin-top: 20px;
+}
+
+a.user-set {
+    font-size: 1.3em;
+    text-decoration: none;
+    color: #333;
+} //个人中心的操作选项

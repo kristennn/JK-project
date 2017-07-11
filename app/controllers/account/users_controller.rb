@@ -1,6 +1,6 @@
 class Account::UsersController < ApplicationController
 before_action :authenticate_user!
-
+layout 'user-center'
   def show
     @user = current_user
   end
