@@ -29,6 +29,7 @@ Rails.application.routes.draw do
         post :public
       end
     end
+    resources :categories
   end
 
   namespace :account do
