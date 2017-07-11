@@ -5,18 +5,27 @@
     <div class="form-group">
       <%= f.input :title, :label => "标题" %>
     </div>
+
+    <div class="form-group">
+      <%= f.input :category_id, as: :select, collection: @categories, label: "类别" %>
+    </div>
+
     <div class="form-group">
       <%= f.input :link, :label => "原文链接" %>
     </div>
+
     <div class="form-group">
       <%= f.input :metacontent, :label => "原文内容" %>
     </div>
+
     <div class="form-group">
       <%= f.cktext_area :content, :label => "翻译成果" %>
     </div>
+
     <div class="form-group">
       <%= f.input :image, as: :file %>
     </div>
+
     <div class="form-actions">
       <%= f.submit "Submit", disable_with: "Submiting...", class: "btn btn-primary"%>
     </div>

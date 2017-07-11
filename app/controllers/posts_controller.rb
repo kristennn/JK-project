@@ -9,12 +9,18 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.where(is_hidden: false).order("id DESC").paginate(:page => params[:page], :per_page => 5)
     @comment = Comment.new
+    if params[:category].blank?
+      @posts = Post.where(is_hidden: false).order("id DESC").paginate(:page => params[:page], :per_page => 5)
+    else
+      @category_id = Category.find_by(name: params[:category]).id
+      @posts = Post.where(:category_id => @category_id).paginate(:page => params[:page], :per_page => 5)
+    end
   end
 
   def new
     @post = Post.new
+    @categories = Category.all
   end
 
   def create
@@ -23,6 +29,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to posts_path
     else
+      @categories = Category.all
       render :new
     end
   end
@@ -36,6 +43,7 @@ class PostsController < ApplicationController
   def edit
     @post = Post.find_by_friendly_id!(params[:id])
     @post.user = current.user
+    @categories = Category.all
   end
 
   def update
@@ -44,6 +52,7 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to posts_path
     else
+      @categories = Category.all
       render :edit
     end
   end
@@ -97,7 +106,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:content, :image, :title, :link, :metacontent, :is_hidden)
+    params.require(:post).permit(:content, :image, :title, :link, :metacontent, :is_hidden, :category_id )
   end
 
   protected
