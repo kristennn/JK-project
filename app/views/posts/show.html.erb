@@ -1,5 +1,7 @@
 <div class="panel panel-default">
   <h2><%= @post.title %></h2>
+  <h2><%= @post.link %></h2>
+  <h2><%= @post.metacontent %></h2>
   <h2><%= @post.content %></h2>
   <div class="panel-body">
     <% if @comments.empty? %>
@@ -15,7 +17,7 @@
                 <!-- 用户的自选头像 -->
             <% else %>
               <%= image_tag("http://ww1.sinaimg.cn/large/006tNbRwgy1ffzxufbo0lj3069069t8o.jpg",class:"thumbnail",style:"width:60px;height:60px;border-radius:50%;") %>
-              <!-- 定义用户未选择头像时的默认头像 -->
+                <!-- 定义用户未选择头像时的默认头像 -->
             <% end %>
             <%= comment.user.username %>
             <%= comment.note %>

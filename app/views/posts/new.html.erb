@@ -3,7 +3,10 @@
 <div class="col-md-4 col-md-offset-4">
   <%= simple_form_for [@post] do |f| %>
     <div class="form-group">
-      <%= f.input :title, :label => "原文链接" %>
+      <%= f.input :title, :label => "标题" %>
+    </div>
+    <div class="form-group">
+      <%= f.input :link, :label => "原文链接" %>
     </div>
     <div class="form-group">
       <%= f.input :metacontent, :label => "原文内容" %>
