@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-md-12">
+    <h2 class="text-center">所有的文章</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>编号</th>
+          <th>内容</th>
+          <th>发布者</th>
+          <th>操作选项</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @posts.each do |post| %>
+          <tr>
+            <td><%= post.id %></td>
+            <td><%= post.title %></td>
+            <td><%= post.user.email %></td>
+            <td>
+              <%= link_to("删除文章", admin_post_path(post), method: :delete, data: { confirm: "你确定要删除这条评论吗？"}, class: "btn btn-xs btn-default") %>
+              <% if post.is_hidden? %>
+                <%= link_to("公开", public_admin_post_path(post), method: :post, class: "btn btn-xs btn-default") %>
+              <% else %>
+                <%= link_to("隐藏", hide_admin_post_path(post), method: :post, class: "btn btn-xs btn-default") %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

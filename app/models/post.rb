@@ -27,9 +27,20 @@ class Post < ApplicationRecord
     self.hates.where( :user_id => user.id ).first
   end
 
+  def hide!
+    self.is_hidden = true
+    self.save
+  end
+
+  def public!
+    self.is_hidden = false
+    self.save
+  end
+
   protected
 
   def generate_friendly_id
     self.friendly_id ||= SecureRandom.uuid
   end
+
 end

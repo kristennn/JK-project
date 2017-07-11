@@ -9,7 +9,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.order("id DESC").all.paginate(:page => params[:page], :per_page => 5)
+    @posts = Post.where(is_hidden: false).order("id DESC").paginate(:page => params[:page], :per_page => 5)
     @comment = Comment.new
   end
 
@@ -97,7 +97,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:content, :image, :title, :link, :metacontent)
+    params.require(:post).permit(:content, :image, :title, :link, :metacontent, :is_hidden)
   end
 
   protected

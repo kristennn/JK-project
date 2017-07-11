@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170711030243) do
+ActiveRecord::Schema.define(version: 20170711064158) do
 
   create_table "collects", force: :cascade do |t|
     t.integer  "post_id"
@@ -49,14 +49,15 @@ ActiveRecord::Schema.define(version: 20170711030243) do
   create_table "posts", force: :cascade do |t|
     t.integer  "user_id"
     t.text     "content"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.string   "image"
     t.integer  "comment_id"
     t.string   "title"
     t.string   "friendly_id"
     t.text     "metacontent"
     t.string   "link"
+    t.boolean  "is_hidden",   default: false
     t.index ["friendly_id"], name: "index_posts_on_friendly_id", unique: true
   end
 

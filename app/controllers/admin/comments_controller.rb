@@ -1,7 +1,7 @@
 class Admin::CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :admin_required
-
+  layout "admin"
   def index
     @comments = Comment.all
   end

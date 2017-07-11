@@ -23,6 +23,12 @@ Rails.application.routes.draw do
         post :public
       end
     end
+    resources :posts do
+      member do
+        post :hide
+        post :public
+      end
+    end
   end
 
   namespace :account do

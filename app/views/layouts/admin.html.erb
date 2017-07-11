@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JK-Project</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <%= render "common/navbar" %>
+      <%= render "common/flashes" %>
+        <div class="col-md-2">
+          <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+            <li>
+              <%= link_to("文章管理", admin_posts_path) %>
+            </li>
+            <li>
+              <%= link_to("评论管理", admin_comments_path) %>
+            </li>
+          </ul>
+        </div>
+      <%= yield %>
+    </div>
+    <%= render "common/footer" %>
+  </body>
+</html>
