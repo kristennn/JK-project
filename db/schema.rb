@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170709072955) do
+ActiveRecord::Schema.define(version: 20170711022834) do
 
   create_table "collects", force: :cascade do |t|
     t.integer  "post_id"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20170709072955) do
     t.integer  "comment_id"
     t.string   "title"
     t.string   "friendly_id"
+    t.text     "metacontent"
     t.index ["friendly_id"], name: "index_posts_on_friendly_id", unique: true
   end
 
