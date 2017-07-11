@@ -2,6 +2,11 @@ class Admin::CategoriesController < ApplicationController
   before_action :authenticate_user!
   layout "admin"
 
+
+  def index
+    @categories = Category.all
+  end
+
   def new
     @category = Category.new
   end
@@ -13,6 +18,26 @@ class Admin::CategoriesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def edit
+    @category = Category.find(params[:id])
+  end
+
+  def update
+    @category = Category.find(params[:id])
+    if @category.update(category_params)
+      redirect_to admin_categories_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @category = Category.find(params[:id])
+    @category.destroy
+    flash[:alert] = "已删除该分类"
+    redirect_to admin_categories_path
   end
 
   private
