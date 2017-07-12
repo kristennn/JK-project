@@ -52,7 +52,11 @@
         <% end %>
       </div>
     </div>
-
+    <div class="container">
+      <% if post.image.present? %>
+        <%= image_tag(post.image.thumb.url, class: "thumbnail")%>
+      <% end %>
+    </div>
     <div class="panel-body">
       <% post.comments.each do |comment| %>
       <% if !comment.is_hidden? %>
