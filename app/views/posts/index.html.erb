@@ -26,7 +26,7 @@
       <span id="psot-thumbsup-<%= post.id%>" class=" label label-danger"><%= post.hates.count%>👎</span>
       <div class="text-right">
         <% if post.liked_users.any? %>
-          <%= post.liked_users.map{ |u| u.display_name}.join(",")%>点了赞
+          <%= post.liked_users.map{ |u| u.display_name}.join(",  ")%>点了赞
         <% end %>
 
         <% if current_user %>
