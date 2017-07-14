@@ -47,8 +47,7 @@ gem 'ransack'
 gem 'font-awesome-rails'
 gem 'devise-i18n'
 gem 'rails-i18n'
-gem 'ckeditor'
-
+gem 'bootstrap-wysihtml5-rails'
 group :development, :test do
   gem 'pry'
   gem 'awesome_rails_console'
