@@ -1,4 +1,9 @@
 <h2 class="text-center">我的发布</h2>
+<br/>
+<% if @post.blank? %>
+ <p>您还未发表任何文章，快去新增吧 </p>
+ <%= link_to("新增", new_post_path, class: "btn btn-xs btn-primary")%>
+<% else %>
 <div class="container">
 <% @posts.each do |post| %>
 
@@ -10,28 +15,9 @@
       <span id="psot-thumbsup-<%= post.id%>" class=" label label-success"><%= post.likes.count%>👍</span>
       <span id="psot-thumbsup-<%= post.id%>" class=" label label-danger"><%= post.hates.count%>👎</span>
       <div class="text-right">
-        <% if post.liked_users.any? %>
-          <%= post.liked_users.map{ |u| u.display_name}.join(",")%>点了赞
-        <% end %>
-
-        <% if current_user %>
-          <% if post.find_like(current_user) %>
-            <%= link_to "取赞", unlike_post_path(post), method: :post, class: "btn btn-primary btn-sm" %>
-          <% else %>
-            <%= link_to "👍", like_post_path(post), method: :post, class: "btn btn-primary btn-sm" %>
-          <% end %>
-        <% end %>
-
-        <% if current_user %>
-          <% unless post.find_hate(current_user) %>
-           <%= link_to "👎", hate_post_path(post), method: :post, class: "btn btn-info btn-sm"  %>
-          <% else %>
-            <%= link_to "👎", hate_post_path(post), method: :post, class: "btn btn-info btn-sm"  %>
-          <% end %>
-        <% end %>
 
         <%= link_to("编辑", edit_account_post_path(post), class: "btn btn-sm btn-info")%>
-
+        <%= link_to("删除", account_post_path(post), method: :delete, data: {confirm: "确定要删除么？"}, class: "btn btn-sm btn-danger")%>
       </div>
     </div>
 
@@ -39,6 +25,6 @@
 
 
   </div>
-
 <% end %>
 </div>
+<% end %>
