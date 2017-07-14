@@ -16,5 +16,5 @@
 //= require bootstrap/alert
 //= require bootstrap/dropdown
 //= require bootstrap-wysihtml5
-//= require bootstrap-wysihtml5/locales/zh-CN
+//= require bootstrap-wysihtml5/locales
 //= require_tree .
