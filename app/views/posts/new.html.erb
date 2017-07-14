@@ -1,6 +1,6 @@
 <h2 class="text-center">新增文章</h2>
 
-<div class="col-md-4 col-md-offset-4">
+<div class="col-md-8 col-md-offset-2">
   <%= simple_form_for [@post] do |f| %>
     <div class="form-group">
       <%= f.input :title, :label => "标题" %>
@@ -15,11 +15,11 @@
     </div>
 
     <div class="form-group">
-      <%= f.input :metacontent, :label => "原文内容" %>
+      <%= f.input :metacontent, as: :wysihtml5, :label => "原文内容" %>
     </div>
 
     <div class="form-group">
-      <%= f.input :content, :label => "翻译成果" %>
+      <%= f.input :content, as: :wysihtml5, :label => "翻译成果" %>
     </div>
 
     <div class="form-group">
