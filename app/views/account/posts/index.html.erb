@@ -1,30 +1,26 @@
 <h2 class="text-center">我的发布</h2>
 <br/>
-<% if @post.blank? %>
- <p>您还未发表任何文章，快去新增吧 </p>
- <%= link_to("新增", new_post_path, class: "btn btn-xs btn-primary")%>
-<% else %>
-<div class="container">
-<% @posts.each do |post| %>
+  <% if @post.blank? %>
+   <p>您还未发表任何文章，快去新增吧 </p>
+   <%= link_to("新增", new_post_path, class: "btn btn-xs btn-primary")%>
+  <% else %>
+  <div class="container">
+   <% @posts.each do |post| %>
 
-  <div class="panel panel-default user-default ">
-    <div class="panel-body">
-      <%= post.title %>
-      <br/>
-      <br/>
-      <span id="psot-thumbsup-<%= post.id%>" class=" label label-success"><%= post.likes.count%>👍</span>
-      <span id="psot-thumbsup-<%= post.id%>" class=" label label-danger"><%= post.hates.count%>👎</span>
-      <div class="text-right">
+    <div class="panel panel-default user-default ">
+      <div class="panel-body">
+        <%= post.title %>
+        <br/>
+        <br/>
+        <span id="psot-thumbsup-<%= post.id%>" class=" label label-success"><%= post.likes.count%>👍</span>
+        <span id="psot-thumbsup-<%= post.id%>" class=" label label-danger"><%= post.hates.count%>👎</span>
+        <div class="text-right">
 
-        <%= link_to("编辑", edit_account_post_path(post), class: "btn btn-sm btn-info")%>
-        <%= link_to("删除", account_post_path(post), method: :delete, data: {confirm: "确定要删除么？"}, class: "btn btn-sm btn-danger")%>
+          <%= link_to("编辑", edit_account_post_path(post), class: "btn btn-sm btn-info")%>
+          <%= link_to("删除", account_post_path(post), method: :delete, data: {confirm: "确定要删除么？"}, class: "btn btn-sm btn-danger")%>
+        </div>
       </div>
     </div>
-
-
-
-
+   <% end %>
   </div>
-<% end %>
-</div>
 <% end %>
