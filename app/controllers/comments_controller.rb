@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-
   
   def new
     @post = Post.find_by_friendly_id!(params[:post_id])
