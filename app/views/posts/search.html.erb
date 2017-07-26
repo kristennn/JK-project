@@ -15,7 +15,7 @@
         <%= post.title %>
         <br/>
         <br/>
-        <span id="psot-thumbsup-<%= post.id%>" class=" label label-success"><%= post.likes.count%>👍</span>
+        <span id="post-thumbsup-<%= post.id%>" class=" label label-success"><%= post.likes.count%>👍</span>
         <div class="text-right">
 
           <% if !current_user.is_collect_of?(post) %>
